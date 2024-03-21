@@ -12,4 +12,4 @@ If you still want to build the project you will need a copy of [SFML 2.6.1](http
 
 ## Credits
 Font and interface uses sprites from Pokémon Mystery Dungeon: Explorers of Sky by Nintendo and Spike Chunsoft.
-Character portraits were taken from the [PMD Sprite Repository](https://sprites.pmdcollab.org/).
+Character portraits were taken from the [PMD Sprite Repository](https://sprites.pmdcollab.org/). Characters belong to The Pokémon Company.
