@@ -15,12 +15,17 @@ Font::Font() : _height(12)
 	_texture->setSmooth(false);
 
 	// Initialise uv coordinates.
-	for (int y = 2; y < 16; y++)
+	for (int y = 0; y < 16; y++)
 	{
 		for (int x = 0; x < 16; x++)
 		{
+			// Calculate character index.
 			int index = x + y * 16;
 
+			// Initialise width.
+			_width[index] = 12;
+
+			// Initialise uv coordinates.
 			_u[index] = _height * x;
 			_v[index] = _height * y;
 		}
@@ -50,8 +55,11 @@ Font::~Font()
 
 const int Font::GetCharWidth(const char& a) const
 {
+	// Convert ASCII char to integer using Windows - 1252
+	int isochar = wchar_t(unsigned char(a));
+
 	// Return the width of the current character, default to zero if a non-character.
-	return (a >= 32 && a < 256) ? _width[int(a)] : 0;
+	return (isochar < 256) ? _width[isochar] : 0;
 }
 const int Font::GetCharHeight() const
 {
@@ -60,8 +68,11 @@ const int Font::GetCharHeight() const
 
 const sf::IntRect Font::GetTextureRect(const char& a) const
 {
+	// Convert ASCII char to integer using Windows-1252.
+	int isochar = wchar_t(unsigned char(a));
+
 	// Return the texture rect of the current character, default to zero if a non-character.
-	int index = (a >= 32 && a < 256) ? int(a) : 0;
+	int index =  (isochar < 256) ? isochar : 0;
 	return sf::IntRect(_u[index], _v[index], _width[index], _height);
 }
 const sf::Texture* Font::GetTexture() const

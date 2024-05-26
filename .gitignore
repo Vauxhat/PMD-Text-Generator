@@ -401,3 +401,6 @@ FodyWeavers.xsd
 SFML-*/
 pugixml-*/
 
+# Captures folder
+PMDTextGenerator/Capture/
+

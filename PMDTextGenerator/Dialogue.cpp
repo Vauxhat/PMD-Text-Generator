@@ -15,7 +15,7 @@ Dialogue::Dialogue()
 
 	// Initialise text.
 	_text.SetFont(&_font);
-	_text.SetString(_currentString);
+	_text.SetString(_currentString, _targetString);
 
 	// Initialise portrait UVs.
 	for (int y = 0; y < 8; y++)
@@ -53,7 +53,7 @@ void Dialogue::Init()
 void Dialogue::FixedUpdate(const float& fixedTime)
 {
 	// Check if current string matches target string.
-	if (_currentString.size() < _targetString.size())
+	/*if (_currentString.size() < _targetString.size())
 	{
 		char currentChar;
 		
@@ -67,7 +67,10 @@ void Dialogue::FixedUpdate(const float& fixedTime)
 
 		// Update text from string.
 		_text.SetString(_currentString);
-	}
+	}*/
+
+	// Update typewriter effect.
+	_text.FixedUpdate();
 }
 
 void Dialogue::Render(sf::RenderWindow* renderer)
